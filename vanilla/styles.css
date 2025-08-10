@@ -396,11 +396,11 @@ h4 {
 }
 .hero-description.left-tight {
   position: relative;
-  left: -76px;
+  left: -36px;
 }
 .hero-description.left-tight .split-char,
 .hero-description.left-tight .split-word {
-  transform: translateX(-76px);
+  transform: translateX(-36px);
   display: inline-block;
 }
 .hero-buttons {
