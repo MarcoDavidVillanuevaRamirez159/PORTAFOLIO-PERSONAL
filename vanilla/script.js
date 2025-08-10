@@ -33,16 +33,16 @@ window.addEventListener("DOMContentLoaded", () => {
       el.classList.add("split-parent");
       splitText(el);
       const targets = el.querySelectorAll(".split-char, .split-word");
-      gsap.set(targets, { opacity: 0, y: 40 });
+      gsap.set(targets, { opacity: 0, y: 28 });
       gsap.to(targets, {
         opacity: 1,
         y: 0,
-        duration: 0.7,
-        ease: "power3.out",
-        stagger: 0.03,
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.025,
         scrollTrigger: {
           trigger: el,
-          start: "top 85%",
+          start: "top 88%",
           toggleActions: "play none none none",
           once: true,
         },
@@ -53,15 +53,15 @@ window.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("[data-reveal], .card").forEach((el) => {
       gsap.fromTo(
         el,
-        { opacity: 0, y: 20 },
+        { opacity: 0, y: 16 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 0.55,
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 88%",
+            start: "top 90%",
             toggleActions: "play none none none",
             once: true,
           },
@@ -131,12 +131,12 @@ window.addEventListener("DOMContentLoaded", () => {
       gsap.fromTo(
         avatar,
         { opacity: 0, y: 20, filter: "drop-shadow(0 0 0 rgba(0,255,213,0))" },
-        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
       );
 
       gsap.to(avatar, {
-        y: -6,
-        duration: 3.2,
+        y: -5,
+        duration: 3,
         ease: "sine.inOut",
         repeat: -1,
         yoyo: true,
@@ -165,12 +165,13 @@ window.addEventListener("DOMContentLoaded", () => {
   if (canvas) {
     const ctx = canvas.getContext("2d");
     const DPR = window.devicePixelRatio || 1;
-    const particles = Array.from({ length: 70 }, () => ({
+    const isSmall = Math.min(window.innerWidth, window.innerHeight) < 520;
+    const particles = Array.from({ length: isSmall ? 40 : 70 }, () => ({
       x: Math.random(),
       y: Math.random(),
       r: Math.random() * 1.2 + 0.3,
-      vx: (Math.random() - 0.5) * 0.0006,
-      vy: (Math.random() - 0.5) * 0.0006,
+      vx: (Math.random() - 0.5) * 0.00055,
+      vy: (Math.random() - 0.5) * 0.00055,
       c: Math.random() > 0.5 ? "#00ffd5" : "#7c5cff",
     }));
     const resize = () => {
@@ -183,7 +184,7 @@ window.addEventListener("DOMContentLoaded", () => {
     resize();
     const loop = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.globalAlpha = 0.6;
+      ctx.globalAlpha = 0.55;
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -191,7 +192,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (p.y < 0 || p.y > 1) p.vy *= -1;
         ctx.beginPath();
         ctx.fillStyle = p.c;
-        ctx.shadowBlur = 18 * DPR;
+        ctx.shadowBlur = 14 * DPR;
         ctx.shadowColor = p.c;
         ctx.arc(
           p.x * canvas.width,
@@ -273,16 +274,16 @@ window.addEventListener("DOMContentLoaded", () => {
     if (window.gsap) {
       gsap.fromTo(
         cf,
-        { opacity: 0, y: 24, filter: "blur(8px)" },
+        { opacity: 0, y: 20, filter: "blur(8px)" },
         {
           opacity: 1,
           y: 0,
           filter: "blur(0px)",
-          duration: 0.9,
+          duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
             trigger: cf,
-            start: "top 80%",
+            start: "top 85%",
             toggleActions: "play none none none",
             once: true,
           },
@@ -307,7 +308,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (!dragging) return;
       dragging = false;
       cf.querySelector(".cf-viewport").style.cursor = "grab";
-      if (Math.abs(deltaX) > 40) {
+      if (Math.abs(deltaX) > 36) {
         index = (index + (deltaX < 0 ? 1 : -1) + items.length) % items.length;
         apply();
       }
