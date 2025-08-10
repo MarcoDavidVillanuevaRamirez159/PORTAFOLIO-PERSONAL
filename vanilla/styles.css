@@ -36,6 +36,7 @@ body {
       transparent
     ),
     var(--color-bg);
+  overflow-x: hidden;
 }
 
 /* Page loader */
@@ -301,6 +302,7 @@ h4 {
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  overflow-x: clip;
 }
 
 .hero-content {
@@ -406,6 +408,7 @@ h4 {
 .hero-buttons {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 /* Hex avatar style */
@@ -739,6 +742,106 @@ h4 {
   }
   .cf-item {
     width: min(82vw, 460px);
+  }
+}
+
+/* Mejoras responsivas para móviles */
+@media (max-width: 768px) {
+  .nav-inner {
+    padding: 0 0.75rem;
+  }
+  .hero-content {
+    padding: 0 1rem;
+    gap: 1.25rem;
+  }
+  .about-section,
+  .skills-section,
+  .projects-section,
+  .contact-section {
+    padding: 3.5rem 1rem 4.5rem;
+  }
+  .cf-viewport {
+    gap: 0.75rem;
+  }
+  .cf-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hex-avatar {
+    width: 186px;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .hero-description {
+    font-size: 0.98rem;
+  }
+  .hero-description.left-tight {
+    left: -20px;
+  }
+  .hero-description.left-tight .split-char,
+  .hero-description.left-tight .split-word {
+    transform: translateX(-20px);
+  }
+  .hero-buttons {
+    gap: 0.75rem;
+  }
+  .cf-viewport {
+    height: clamp(300px, 62vh, 560px);
+    margin: 0.75rem 0 2rem;
+  }
+  .cf-item {
+    --cf-offset: clamp(90px, 28vw, 160px);
+    width: min(88vw, 420px);
+  }
+  .cf-desc {
+    margin-top: 1.25rem;
+    margin-bottom: 8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hex-avatar {
+    width: 170px;
+  }
+  .hero-title {
+    font-size: clamp(1.6rem, 8.5vw, 2rem);
+  }
+  .hero-description.left-tight {
+    left: -12px;
+  }
+  .hero-description.left-tight .split-char,
+  .hero-description.left-tight .split-word {
+    transform: translateX(-12px);
+  }
+  .cf-viewport {
+    height: clamp(280px, 58vh, 520px);
+  }
+}
+
+@media (max-width: 340px) {
+  .hex-avatar {
+    width: 158px;
+  }
+  .hero-content {
+    padding: 0 0.75rem;
+  }
+  .hero-description.left-tight {
+    left: 0;
+  }
+  .hero-description.left-tight .split-char,
+  .hero-description.left-tight .split-word {
+    transform: translateX(0);
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.65rem 1.1rem;
+  }
+  .cf-viewport {
+    height: clamp(260px, 56vh, 480px);
   }
 }
 .skills-grid {
