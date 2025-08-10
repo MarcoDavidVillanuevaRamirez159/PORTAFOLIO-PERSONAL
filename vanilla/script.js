@@ -25,6 +25,11 @@ function splitText(element) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+  // Fijar el zoom/layout en móviles para evitar "zoom out" inicial
+  document.documentElement.style.setProperty("overflow-x", "hidden");
+  document.body.style.setProperty("overflow-x", "hidden");
+  document.body.style.setProperty("maxWidth", "100vw");
+
   if (window.gsap) {
     gsap.registerPlugin(ScrollTrigger);
 
